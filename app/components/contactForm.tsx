@@ -1,14 +1,20 @@
 "use client";
 import { useState } from "react";
-import { sendSampleEmail } from "@/app/api/actions";
+import { sendSampleEmail, sendSuccessEmail } from "@/app/actions";
 
 export default function ContactForm() {
-  type FormData = { name: string; email: string; message: string };
+  type FormData = {
+    name: string;
+    email: string;
+    phone: string;
+    message: string;
+  };
   type FormStatus = "loading" | "success" | "error" | null;
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [status, setStatus] = useState<FormStatus>(null);
@@ -26,7 +32,8 @@ export default function ContactForm() {
 
     try {
       await sendSampleEmail(formData);
-      setFormData({ name: "", email: "", message: "" });
+      await sendSuccessEmail(formData.email);
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setStatus("success");
     } catch (error: unknown) {
       console.error("Error sending message:", error);
@@ -57,6 +64,15 @@ export default function ContactForm() {
               required
               className="w-full rounded-md border border-muted/40 bg-light/60 px-4 py-3 text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary-soft"
             />
+            <input
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              type="tel"
+              placeholder="Your Phone Number"
+              required
+              className="w-full rounded-md border border-muted/40 bg-light/60 px-4 py-3 text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary-soft"
+            />
             <textarea
               name="message"
               value={formData.message}
@@ -75,14 +91,27 @@ export default function ContactForm() {
             </button>
 
             {status === "success" && (
-              <p className="text-center text-sm font-medium text-surface-soft">
-                Message sent successfully!
-              </p>
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50/90 px-4 py-3 text-emerald-800">
+                <p className="flex items-center justify-center gap-2 text-sm font-semibold">
+                  <span
+                    className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs text-white"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </span>
+                  Message sent successfully
+                </p>
+                <p className="mt-1 text-center text-xs text-emerald-700/90">
+                  We&apos;ll get back to you shortly.
+                </p>
+              </div>
             )}
             {status === "error" && (
-              <p className="text-center text-sm font-medium text-accent">
-                Failed to send message. Please try again.
-              </p>
+              <div className="rounded-lg border border-rose-200 bg-rose-50/90 px-4 py-3 text-rose-800">
+                <p className="text-center text-sm font-semibold">
+                  Failed to send message. Please try again.
+                </p>
+              </div>
             )}
           </form>
         </div>
