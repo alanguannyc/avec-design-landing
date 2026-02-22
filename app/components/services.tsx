@@ -1,8 +1,11 @@
 export default function Services() {
   return (
-    <section id="services" className="container mx-auto px-6 py-20 bg-light">
-      <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <section id="services" className="container mx-auto px-6 py-20">
+      <div className="section-shell bg-light/70 p-8 md:p-12">
+        <h2 className="mb-12 text-center text-3xl font-bold text-primary">
+          Our Services
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {[
           {
             title: "Website Management",
@@ -27,14 +30,15 @@ export default function Services() {
         ].map((service) => (
           <div
             key={service.title}
-            className="p-6 border rounded-lg hover:shadow-lg transition-shadow"
+            className="rounded-xl border border-muted/25 bg-white/80 p-6 transition hover:-translate-y-0.5 hover:border-secondary-soft/80"
           >
-            <h3 className="text-xl font-semibold mb-2 text-secondary">
+            <h3 className="mb-2 text-xl font-semibold text-surface">
               {service.title}
             </h3>
-            <p className="text-gray-600">{service.desc}</p>
+            <p className="text-primary/75">{service.desc}</p>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );

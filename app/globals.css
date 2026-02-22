@@ -1,24 +1,68 @@
-/* app/globals.css */
-
-/* 1) Pull in Tailwind v4 */
 @import "tailwindcss";
 
-/* 2) Your new, elevated design tokens */
-@theme {
-  --color-primary: #0f1b2b; /* midnight navy (deep, moody) */
-  --color-secondary: #b08d57; /* muted brass (warm, elegant) */
-  --color-accent: #8d8f9a; /* soft lavender‑gray (subtle pop) */
-  --color-light: #f0efef; /* warm linen (gentle off‑white) */
-  --color-muted: #a7a9ac; /* stone gray (supporting neutral) */
+:root {
+  --color-primary: #0f1f2e;
+  --color-secondary: #bf7d3c;
+  --color-secondary-soft: #e3be84;
+  --color-secondary-deep: #8f5828;
+  --color-accent: #d65a4a;
+  --color-light: #f6f0e5;
+  --color-muted: #8f9ba6;
+  --color-surface: #132a3d;
+  --color-surface-soft: #1b3850;
 }
 
-/* 3) Optional dark‑mode tweaks */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #f0efef;
-    --color-secondary: #b08d57;
-    --color-accent: #8d8f9a;
-    --color-light: #0f1b2b;
-    --color-muted: #a7a9ac;
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-soft: var(--color-secondary-soft);
+  --color-secondary-deep: var(--color-secondary-deep);
+  --color-accent: var(--color-accent);
+  --color-light: var(--color-light);
+  --color-muted: var(--color-muted);
+  --color-surface: var(--color-surface);
+  --color-surface-soft: var(--color-surface-soft);
+}
+
+* {
+  border-color: color-mix(in oklab, var(--color-muted) 28%, transparent);
+}
+
+body {
+  color: var(--color-primary);
+  background:
+    radial-gradient(1000px circle at 0% 0%, #fff6ea 0%, transparent 55%),
+    radial-gradient(750px circle at 100% 20%, #ffd3b133 0%, transparent 50%),
+    var(--color-light);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-secondary) 40%, white);
+  color: var(--color-primary);
+}
+
+.section-shell {
+  /* border: 1px solid color-mix(in oklab, var(--color-muted) 30%, transparent); */
+  border-radius: 1.25rem;
+  box-shadow:
+    0 20px 36px -26px rgba(0, 0, 0, 0.28),
+    0 6px 14px -14px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-marquee-track {
+  animation: logo-marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee-track:hover {
+  animation-play-state: paused;
 }

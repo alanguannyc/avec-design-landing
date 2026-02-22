@@ -7,10 +7,12 @@ import Projects from "./components/projects";
 import ContactForm from "./components/contactForm";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
+import TrustedBy from "./components/trustedBy";
 // app/page.tsx
 export const metadata = {
   title: "AVEC Design | Digital Solutions & AI Automations",
-  description: "…your description here…",
+  description:
+    "Elevate your brand with website management, bespoke design, custom applications, digital marketing, and AI-driven automations by AVEC Design.",
 };
 export default function HomePage() {
   return (
@@ -25,7 +27,7 @@ export default function HomePage() {
 
       <Navbar />
 
-      <main className="mt-12">
+      <main className="pt-2">
         {/* Hero Section */}
         <Hero />
 
@@ -34,8 +36,10 @@ export default function HomePage() {
         {/* Work Showcase */}
 
         <Projects />
-        {/* CTA Section */}
 
+        {/* Social Proof */}
+        <TrustedBy />
+        {/* CTA Section */}
         <CTA />
         {/* Contact Section */}
         <ContactForm />

@@ -1,4 +1,6 @@
 // components/Projects.tsx
+import Image from "next/image";
+
 const projects = [
   {
     title: "Student Information System",
@@ -14,24 +16,35 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="bg-dark text-light py-16">
-      <div className="container mx-auto px-6 flex flex-col gap-16 lg:flex-row lg:gap-16">
+    <section id="work" className="bg-primary py-20 text-light">
+      <div className="container mx-auto px-6">
+        <h2 className="mb-12 text-center text-3xl font-bold text-light">
+          Selected Work
+        </h2>
+        <div className="flex flex-col gap-10">
         {projects.map((p) => (
           <div
             key={p.title}
-            className="flex flex-col md:flex-row items-center gap-8"
+            className="section-shell flex flex-col items-center gap-8 border-secondary-soft/30 bg-surface/80 p-6 md:flex-row"
           >
-            <img
-              src={p.img}
-              alt={p.title}
-              className="w-full md:w-1/2 rounded-lg border-2 border-secondary"
-            />
+            <div className="w-full md:w-1/2">
+              <Image
+                src={p.img}
+                alt={p.title}
+                width={1200}
+                height={900}
+                className="h-auto w-full rounded-lg border border-secondary-soft/55"
+              />
+            </div>
             <div className="md:w-1/2">
-              <h4 className="text-2xl font-bold text-secondary">{p.title}</h4>
-              <p className="mt-4 text-gray-300">{p.desc}</p>
+              <h4 className="text-2xl font-bold text-secondary-soft">
+                {p.title}
+              </h4>
+              <p className="mt-4 text-light/80">{p.desc}</p>
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );
