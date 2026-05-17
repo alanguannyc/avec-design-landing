@@ -1,41 +1,120 @@
+const aiCapabilities = [
+  "Custom agent development",
+  "Multi-agent orchestration",
+  "RAG & knowledge bases",
+  "LLM fine-tuning & evaluation",
+  "API & CRM integrations",
+  "Monitoring & observability",
+];
+
+const services = [
+  {
+    title: "Website Management",
+    desc: "Proactive monitoring, performance tuning, and security updates so your site stays fast and reliable.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+        <rect x="3" y="3" width="18" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Custom Design",
+    desc: "Pixel-perfect branding, intuitive layouts, and interfaces that convert — from identity to production.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Custom Applications",
+    desc: "Scalable web and mobile apps tailored to your workflows — built to grow with your business.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+  },
+  {
+    title: "Digital Marketing",
+    desc: "Data-driven ads, SEO, and social campaigns that drive qualified traffic and measurable revenue.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+        <polyline points="16 7 22 7 22 13" />
+      </svg>
+    ),
+  },
+];
+
 export default function Services() {
   return (
-    <section id="services" className="container mx-auto px-6 py-20">
-      <div className="section-shell bg-light/70 p-8 md:p-12">
-        <h2 className="mb-12 text-center text-3xl font-bold text-primary">
-          Our Services
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              title: "Website Management",
-              desc: "Keep your site secure, updated, and optimized with proactive monitoring and performance tuning.",
-            },
-            {
-              title: "Custom Design",
-              desc: "Stand out with pixel-perfect branding, intuitive layouts, and engaging user experiences.",
-            },
-            {
-              title: "Custom Applications",
-              desc: "Build scalable web and mobile apps tailored to your unique business needs.",
-            },
-            {
-              title: "Digital Marketing",
-              desc: "Drive traffic, engagement, and revenue with targeted ads, SEO, and social campaigns.",
-            },
-            {
-              title: "AI Automations",
-              desc: "Automate repetitive tasks and unlock data-driven insights with custom AI workflows.",
-            },
-          ].map((service) => (
+    <section id="services" className="bg-surface/30 py-24 text-light">
+      <div className="container mx-auto px-6">
+        <div className="mb-14">
+          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary">
+            What We Do
+          </p>
+          <h2 className="text-3xl font-bold text-light md:text-4xl">
+            Full-Stack Digital Services
+          </h2>
+        </div>
+
+        {/* Featured: Managed AI Services */}
+        <div className="service-card relative mb-5 overflow-hidden rounded-2xl border border-secondary/15 bg-primary/60 p-8 md:p-10">
+          <div className="hero-grid pointer-events-none absolute inset-0 opacity-50" />
+          <div className="relative flex flex-col gap-10 md:flex-row md:items-start">
+            <div className="flex-1">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-secondary/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary-soft">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary" />
+                Featured Service
+              </span>
+              <h3 className="mb-3 text-2xl font-bold text-light md:text-3xl">
+                Managed AI Services
+              </h3>
+              <p className="max-w-lg text-[15px] leading-relaxed text-light/55">
+                From scoping to deployment and ongoing operations, we build and
+                manage AI agents that automate your most time-consuming
+                workflows. No ML team required.
+              </p>
+              <a
+                href="#agents"
+                className="mt-7 inline-block rounded-lg border border-secondary/30 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-secondary-soft transition hover:border-secondary hover:bg-secondary/8"
+              >
+                See Agent Examples
+              </a>
+            </div>
+            <div className="flex-1">
+              <ul className="grid grid-cols-2 gap-2">
+                {aiCapabilities.map((cap) => (
+                  <li
+                    key={cap}
+                    className="flex items-center gap-2.5 rounded-lg border border-secondary/10 bg-surface/60 px-3 py-2.5 text-[13px] text-light/60"
+                  >
+                    <span className="text-secondary/70">◈</span>
+                    {cap}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Other services */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service) => (
             <div
               key={service.title}
-              className="rounded-xl border border-muted/25 bg-white/80 p-6 transition hover:-translate-y-0.5 hover:border-secondary/65"
+              className="service-card rounded-xl border border-secondary/10 bg-primary/40 p-6"
             >
-              <h3 className="mb-2 text-xl font-semibold text-secondary">
+              <div className="mb-4 text-secondary/80">{service.icon}</div>
+              <h3 className="mb-2 text-[15px] font-semibold text-light/90">
                 {service.title}
               </h3>
-              <p className="text-primary/75">{service.desc}</p>
+              <p className="text-[13px] leading-relaxed text-light/45">{service.desc}</p>
             </div>
           ))}
         </div>

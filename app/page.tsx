@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import Hero from "@/app/components/hero";
 import Services from "@/app/components/services";
+import AgentSection from "@/app/components/agentSection";
 import CTA from "@/app/components/CTA";
 import Projects from "./components/projects";
 import ContactForm from "./components/contactForm";
@@ -27,12 +28,16 @@ export default function HomePage() {
 
       <Navbar />
 
-      <main className="pt-2">
+      <main>
         {/* Hero Section */}
         <Hero />
 
         {/* Services Section */}
         <Services />
+
+        {/* AI Agents Section */}
+        <AgentSection />
+
         {/* Work Showcase */}
 
         <Projects />

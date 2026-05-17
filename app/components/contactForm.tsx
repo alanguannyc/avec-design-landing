@@ -29,7 +29,6 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
-
     try {
       await sendSampleEmail(formData);
       await sendSuccessEmail(formData.email);
@@ -40,76 +39,81 @@ export default function ContactForm() {
       setStatus("error");
     }
   };
+
+  const inputClass =
+    "w-full rounded-lg border border-secondary/12 bg-primary/60 px-4 py-3 text-[14px] text-light placeholder:text-light/25 focus:border-secondary/40 focus:outline-none focus:ring-1 focus:ring-secondary/30 transition";
+
   return (
-    <section id="contact" className="w-full bg-light py-20 text-primary">
+    <section id="contact" className="py-24 text-light">
       <div className="container mx-auto px-6">
-        <div className="section-shell mx-auto max-w-2xl bg-white/85 p-8 md:p-10">
-          <h2 className="mb-6 text-center text-3xl font-bold">Get in Touch</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              type="text"
-              placeholder="Your Name"
-              required
-              className="w-full rounded-md border border-muted/40 bg-light/60 px-4 py-3 text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary-soft"
-            />
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              type="email"
-              placeholder="Your Email"
-              required
-              className="w-full rounded-md border border-muted/40 bg-light/60 px-4 py-3 text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary-soft"
-            />
+        <div className="mx-auto max-w-2xl">
+          <div className="mb-10">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary">
+              Get in Touch
+            </p>
+            <h2 className="text-3xl font-bold text-light md:text-4xl">
+              Let's build something together.
+            </h2>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                type="text"
+                placeholder="Your Name"
+                required
+                className={inputClass}
+              />
+              <input
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                type="email"
+                placeholder="Your Email"
+                required
+                className={inputClass}
+              />
+            </div>
             <input
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               type="tel"
-              placeholder="Your Phone Number"
+              placeholder="Phone Number"
               required
-              className="w-full rounded-md border border-muted/40 bg-light/60 px-4 py-3 text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary-soft"
+              className={inputClass}
             />
             <textarea
               name="message"
               value={formData.message}
               onChange={handleChange}
-              rows={4}
-              placeholder="How can we help you?"
+              rows={5}
+              placeholder="Tell us about your project or the workflow you want to automate..."
               required
-              className="w-full rounded-md border border-muted/40 bg-light/60 px-4 py-3 text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary-soft"
+              className={inputClass}
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full rounded-md bg-primary px-6 py-3 font-semibold text-light transition-colors duration-200 hover:bg-surface-soft focus:outline-none focus:ring-2 focus:ring-secondary-soft disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-70"
+              className="w-full rounded-lg bg-secondary py-3.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-primary shadow-[0_8px_24px_-10px_rgba(192,138,66,0.4)] transition hover:bg-secondary-soft disabled:cursor-not-allowed disabled:opacity-50"
             >
               {status === "loading" ? "Sending..." : "Send Message"}
             </button>
 
             {status === "success" && (
-              <div className="rounded-lg border border-emerald-200 bg-emerald-50/90 px-4 py-3 text-emerald-800">
-                <p className="flex items-center justify-center gap-2 text-sm font-semibold">
-                  <span
-                    className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs text-white"
-                    aria-hidden="true"
-                  >
-                    ✓
-                  </span>
-                  Message sent successfully
-                </p>
-                <p className="mt-1 text-center text-xs text-emerald-700/90">
-                  We&apos;ll get back to you shortly.
+              <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/8 px-4 py-3 text-center">
+                <p className="text-[13px] font-semibold text-emerald-400">
+                  Message sent — we'll be in touch shortly.
                 </p>
               </div>
             )}
             {status === "error" && (
-              <div className="rounded-lg border border-rose-200 bg-rose-50/90 px-4 py-3 text-rose-800">
-                <p className="text-center text-sm font-semibold">
-                  Failed to send message. Please try again.
+              <div className="rounded-lg border border-accent/20 bg-accent/8 px-4 py-3 text-center">
+                <p className="text-[13px] font-semibold text-accent">
+                  Failed to send. Please try again.
                 </p>
               </div>
             )}

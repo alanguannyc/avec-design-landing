@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const brands = [
   {
     name: "Hotel Association of New York City",
@@ -21,27 +19,27 @@ const brands = [
 
 function LogoChip({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex min-w-[250px] items-center justify-center rounded-xl border border-secondary-soft/35 bg-white/70 px-6 py-2 backdrop-blur-sm">
-      <img src={logo} alt={name} className="object-contain w-40" />
+    <div className="flex min-w-[220px] items-center justify-center rounded-lg border border-secondary/10 bg-surface/60 px-6 py-3">
+      <img
+        src={logo}
+        alt={name}
+        className="h-8 w-auto object-contain opacity-50 brightness-0 invert filter"
+      />
     </div>
   );
 }
 
 export default function TrustedBy() {
   return (
-    <section className="py-10 md:py-12" aria-label="Trusted by">
+    <section aria-label="Trusted by" className="py-16">
       <div className="container mx-auto px-6">
-        <h2 className="mb-12 text-center text-3xl font-bold text-primary">
+        <p className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-light/30">
           Trusted By
-        </h2>
-        <div className="section-shell overflow-hidden bg-light/75 p-4 md:p-5">
-          <div className="logo-marquee-track flex w-max gap-4">
+        </p>
+        <div className="overflow-hidden">
+          <div className="logo-marquee-track flex w-max gap-3">
             {[...brands, ...brands].map((brand, i) => (
-              <LogoChip
-                key={`${brand.name}-${i}`}
-                name={brand.name}
-                logo={brand.logo}
-              />
+              <LogoChip key={`${brand.name}-${i}`} name={brand.name} logo={brand.logo} />
             ))}
           </div>
         </div>

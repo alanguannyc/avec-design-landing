@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #0f1f2e;
-  --color-secondary: #bf7d3c;
-  --color-secondary-soft: #e3be84;
-  --color-secondary-deep: #8f5828;
+  --color-primary: #080f1a;
+  --color-secondary: #c08a42;
+  --color-secondary-soft: #e2c07a;
+  --color-secondary-deep: #8f5e28;
   --color-accent: #d65a4a;
-  --color-light: #f6f0e5;
-  --color-muted: #8f9ba6;
-  --color-surface: #132a3d;
-  --color-surface-soft: #1b3850;
+  --color-light: #cdd9e5;
+  --color-muted: #4e6070;
+  --color-surface: #0e1d2c;
+  --color-surface-soft: #142234;
 }
 
 @theme {
@@ -25,44 +25,96 @@
 }
 
 * {
-  border-color: color-mix(in oklab, var(--color-muted) 28%, transparent);
+  border-color: rgba(192, 138, 66, 0.1);
 }
 
 body {
-  color: var(--color-primary);
-  background:
-    radial-gradient(1000px circle at 0% 0%, #fff6ea 0%, transparent 55%),
-    radial-gradient(750px circle at 100% 20%, #ffd3b133 0%, transparent 50%),
-    var(--color-light);
+  color: var(--color-light);
+  background: #080f1a;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--color-secondary) 40%, white);
-  color: var(--color-primary);
+  background: rgba(192, 138, 66, 0.3);
+  color: #e2c07a;
 }
 
+/* ── Section shell — used for elevated cards ──────────────── */
 .section-shell {
-  /* border: 1px solid color-mix(in oklab, var(--color-muted) 30%, transparent); */
   border-radius: 1.25rem;
   box-shadow:
-    0 20px 36px -26px rgba(0, 0, 0, 0.28),
-    0 6px 14px -14px rgba(0, 0, 0, 0.35);
+    0 1px 0 0 rgba(192, 138, 66, 0.08),
+    0 24px 48px -20px rgba(0, 0, 0, 0.5);
 }
 
+/* ── Logo marquee ─────────────────────────────────────────── */
 @keyframes logo-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .logo-marquee-track {
   animation: logo-marquee 35s linear infinite;
   will-change: transform;
 }
-
 .logo-marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* ── Futuristic / AI elements ─────────────────────────────── */
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(192, 138, 66, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 138, 66, 0.055) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* Horizontal gold rule used between major sections */
+.section-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(192, 138, 66, 0.35) 30%,
+    rgba(192, 138, 66, 0.35) 70%,
+    transparent 100%
+  );
+}
+
+.agent-card {
+  transition:
+    box-shadow 0.28s ease,
+    transform 0.2s ease,
+    border-color 0.28s ease;
+}
+.agent-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(192, 138, 66, 0.4),
+    0 20px 48px -18px rgba(192, 138, 66, 0.18);
+  transform: translateY(-3px);
+}
+
+.service-card {
+  transition:
+    box-shadow 0.28s ease,
+    transform 0.2s ease,
+    border-color 0.28s ease;
+}
+.service-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(192, 138, 66, 0.35),
+    0 14px 36px -14px rgba(192, 138, 66, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(192, 138, 66, 0.3);
+}
+
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.terminal-cursor::after {
+  content: "▋";
+  animation: terminal-blink 1.1s step-end infinite;
+  color: var(--color-secondary-soft);
 }
