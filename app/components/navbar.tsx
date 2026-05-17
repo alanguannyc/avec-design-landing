@@ -10,9 +10,9 @@ export default function Navbar() {
           alt="AVEC Design Logo"
           width={180}
           height={40}
-          className="h-auto w-auto brightness-0 invert"
+          className="h-auto w-24 brightness-0 invert md:w-36"
         />
-        <div className="flex items-center gap-7 text-[13px] font-semibold uppercase tracking-[0.12em] text-light/45">
+        <div className="flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-light md:gap-7 md:text-[13px] md:tracking-[0.12em]">
           <Link href="#services" className="transition-colors hover:text-secondary-soft">
             Services
           </Link>
@@ -21,7 +21,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="#contact"
-            className="rounded-lg border border-secondary/25 bg-secondary/8 px-4 py-2 text-secondary-soft transition hover:border-secondary/50 hover:bg-secondary/15"
+            className="rounded-lg border border-secondary/25 bg-secondary/8 px-3 py-1.5 text-secondary-soft transition hover:border-secondary/50 hover:bg-secondary/15 md:px-4 md:py-2"
           >
             Contact
           </Link>
