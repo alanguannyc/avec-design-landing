@@ -19,11 +19,11 @@ const brands = [
 
 function LogoChip({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex min-w-[220px] items-center justify-center rounded-lg border border-secondary/10 bg-surface/60 px-6 py-3">
+    <div className="flex min-w-[220px] items-center justify-center px-8 py-4">
       <img
         src={logo}
         alt={name}
-        className="h-8 w-auto object-contain opacity-50 brightness-0 invert filter"
+        className="h-8 w-auto object-contain opacity-35 brightness-0 invert filter transition-opacity hover:opacity-60"
       />
     </div>
   );
@@ -31,17 +31,12 @@ function LogoChip({ name, logo }: { name: string; logo: string }) {
 
 export default function TrustedBy() {
   return (
-    <section aria-label="Trusted by" className="py-16">
-      <div className="container mx-auto px-6">
-        <p className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-light/30">
-          Trusted By
-        </p>
-        <div className="overflow-hidden">
-          <div className="logo-marquee-track flex w-max gap-3">
-            {[...brands, ...brands].map((brand, i) => (
-              <LogoChip key={`${brand.name}-${i}`} name={brand.name} logo={brand.logo} />
-            ))}
-          </div>
+    <section aria-label="Trusted by" className="relative z-10 border-t border-secondary/8 bg-[#060c16] py-14">
+      <div className="overflow-hidden">
+        <div className="logo-marquee-track flex w-max gap-0">
+          {[...brands, ...brands].map((brand, i) => (
+            <LogoChip key={`${brand.name}-${i}`} name={brand.name} logo={brand.logo} />
+          ))}
         </div>
       </div>
     </section>

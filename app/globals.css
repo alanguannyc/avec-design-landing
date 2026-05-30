@@ -62,10 +62,14 @@ body {
 
 /* ── Futuristic / AI elements ─────────────────────────────── */
 
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
 .hero-grid {
   background-image:
-    linear-gradient(rgba(192, 138, 66, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(192, 138, 66, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(192, 138, 66, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 138, 66, 0.06) 1px, transparent 1px);
   background-size: 52px 52px;
 }
 

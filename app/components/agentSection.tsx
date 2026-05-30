@@ -1,3 +1,5 @@
+import FadeUp from "./fadeUp";
+
 const agents = [
   {
     name: "Customer Support Agent",
@@ -64,63 +66,47 @@ const agents = [
 
 export default function AgentSection() {
   return (
-    <section id="agents" className="relative overflow-hidden py-24 text-light">
-      <div className="hero-grid pointer-events-none absolute inset-0 opacity-40" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-full max-w-2xl -translate-x-1/2 bg-gradient-to-r from-transparent via-secondary/25 to-transparent" />
-
+    <section id="agents" className="relative z-10 bg-[#060c16] py-32 text-light">
       <div className="container relative mx-auto px-6">
-        <div className="mb-14">
+        <FadeUp className="mb-14">
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary">
             Managed AI Services
           </p>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <h2 className="text-3xl font-bold text-light md:text-4xl">
+            <h2 className="font-display font-light text-[2.5rem] text-light md:text-[4rem]">
               AI Agents Built for Your Business
             </h2>
             <p className="max-w-sm text-[14px] leading-relaxed text-light/45 md:text-right">
               Custom-built, trained on your data, and operated by our team.
             </p>
           </div>
-        </div>
+        </FadeUp>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {agents.map((agent) => (
-            <div
-              key={agent.name}
-              className="agent-card rounded-2xl border border-secondary/12 bg-surface/50 p-7"
-            >
-              <div className="mb-5 flex items-start justify-between">
-                <div className="rounded-lg border border-secondary/20 bg-secondary/8 p-2.5 text-secondary-soft">
-                  {agent.icon}
-                </div>
-                <span className="rounded-full border border-light/8 bg-primary/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-light/35">
-                  {agent.tag}
-                </span>
-              </div>
-              <h3 className="mb-2 text-[18px] font-bold text-light">{agent.name}</h3>
-              <p className="text-[13px] leading-relaxed text-light/50">{agent.desc}</p>
-              <div className="mt-6 flex gap-8 border-t border-secondary/8 pt-5">
-                {agent.stats.map((s) => (
-                  <div key={s.label}>
-                    <div className="text-xl font-bold text-secondary-soft">{s.val}</div>
-                    <div className="mt-0.5 text-[11px] uppercase tracking-wider text-light/35">{s.label}</div>
+          {agents.map((agent, i) => (
+            <FadeUp key={agent.name} delay={i * 0.1}>
+              <div className="agent-card rounded-2xl border border-secondary/10 bg-transparent p-8">
+                <div className="mb-5 flex items-start justify-between">
+                  <div className="rounded-lg border border-secondary/20 bg-secondary/8 p-2.5 text-secondary-soft">
+                    {agent.icon}
                   </div>
-                ))}
+                  <span className="rounded-full border border-light/8 bg-primary/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-light/35">
+                    {agent.tag}
+                  </span>
+                </div>
+                <h3 className="mb-2 text-[18px] font-bold text-light">{agent.name}</h3>
+                <p className="text-[13px] leading-relaxed text-light/50">{agent.desc}</p>
+                <div className="mt-6 flex gap-8 border-t border-secondary/8 pt-5">
+                  {agent.stats.map((s) => (
+                    <div key={s.label}>
+                      <div className="text-xl font-bold text-secondary-soft">{s.val}</div>
+                      <div className="mt-0.5 text-[11px] uppercase tracking-wider text-light/35">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeUp>
           ))}
-        </div>
-
-        <div className="mt-12 flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-center">
-          <p className="text-[13px] text-light/40">
-            Not sure which agent fits your workflow?
-          </p>
-          <a
-            href="#contact"
-            className="text-[13px] font-semibold text-secondary-soft underline-offset-4 hover:underline"
-          >
-            Let's scope it together →
-          </a>
         </div>
       </div>
     </section>

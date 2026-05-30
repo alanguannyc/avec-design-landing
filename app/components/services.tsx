@@ -1,3 +1,5 @@
+import FadeUp from "./fadeUp";
+
 const aiCapabilities = [
   "Custom agent development",
   "Multi-agent orchestration",
@@ -52,70 +54,70 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-surface/30 py-24 text-light">
+    <section id="services" className="relative z-10 bg-[#080f1a] py-32 text-light">
       <div className="container mx-auto px-6">
-        <div className="mb-14">
+        <FadeUp className="mb-14">
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary">
             What We Do
           </p>
-          <h2 className="text-3xl font-bold text-light md:text-4xl">
+          <h2 className="font-display font-light text-[2.5rem] text-light md:text-[4rem]">
             Full-Stack Digital Services
           </h2>
-        </div>
+        </FadeUp>
 
         {/* Featured: Managed AI Services */}
-        <div className="service-card relative mb-5 overflow-hidden rounded-2xl border border-secondary/15 bg-primary/60 p-8 md:p-10">
-          <div className="hero-grid pointer-events-none absolute inset-0 opacity-50" />
-          <div className="relative flex flex-col gap-10 md:flex-row md:items-start">
-            <div className="flex-1">
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-secondary/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary-soft">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary" />
-                Featured Service
-              </span>
-              <h3 className="mb-3 text-2xl font-bold text-light md:text-3xl">
-                Managed AI Services
-              </h3>
-              <p className="max-w-lg text-[15px] leading-relaxed text-light/55">
-                From scoping to deployment and ongoing operations, we build and
-                manage AI agents that automate your most time-consuming
-                workflows. No ML team required.
-              </p>
-              <a
-                href="#agents"
-                className="mt-7 inline-block rounded-lg border border-secondary/30 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-secondary-soft transition hover:border-secondary hover:bg-secondary/8"
-              >
-                See Agent Examples
-              </a>
-            </div>
-            <div className="flex-1">
-              <ul className="grid grid-cols-2 gap-2">
-                {aiCapabilities.map((cap) => (
-                  <li
-                    key={cap}
-                    className="flex items-center gap-2.5 rounded-lg border border-secondary/10 bg-surface/60 px-3 py-2.5 text-[13px] text-light/60"
-                  >
-                    <span className="text-secondary/70">◈</span>
-                    {cap}
-                  </li>
-                ))}
-              </ul>
+        <FadeUp delay={0.1}>
+          <div className="service-card relative mb-8 overflow-hidden rounded-2xl border border-secondary/12 bg-surface/30 p-10 md:p-14">
+            <div className="flex flex-col gap-10 md:flex-row md:items-start">
+              <div className="flex-1">
+                <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-secondary/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary-soft">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary" />
+                  Featured Service
+                </span>
+                <h3 className="mb-3 text-2xl font-bold text-light md:text-3xl">
+                  Managed AI Services
+                </h3>
+                <p className="max-w-lg text-[15px] leading-relaxed text-light/55">
+                  From scoping to deployment and ongoing operations, we build and
+                  manage AI agents that automate your most time-consuming
+                  workflows. No ML team required.
+                </p>
+                <a
+                  href="#agents"
+                  className="mt-7 inline-block rounded border border-secondary/30 px-6 py-2.5 text-[13px] font-semibold text-secondary-soft transition hover:border-secondary hover:bg-secondary/8"
+                >
+                  See Agent Examples
+                </a>
+              </div>
+              <div className="flex-1">
+                <ul className="grid grid-cols-2 gap-2">
+                  {aiCapabilities.map((cap) => (
+                    <li
+                      key={cap}
+                      className="flex items-center gap-2.5 rounded-lg border border-secondary/10 bg-surface/60 px-3 py-2.5 text-[13px] text-light/60"
+                    >
+                      <span className="text-secondary/70">◈</span>
+                      {cap}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        </FadeUp>
 
         {/* Other services */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="service-card rounded-xl border border-secondary/10 bg-primary/40 p-6"
-            >
-              <div className="mb-4 text-secondary/80">{service.icon}</div>
-              <h3 className="mb-2 text-[15px] font-semibold text-light/90">
-                {service.title}
-              </h3>
-              <p className="text-[13px] leading-relaxed text-light/45">{service.desc}</p>
-            </div>
+          {services.map((service, i) => (
+            <FadeUp key={service.title} delay={0.1 + i * 0.08}>
+              <div className="service-card rounded-xl border border-secondary/8 bg-transparent p-8 hover:border-secondary/25">
+                <div className="mb-4 text-secondary/80">{service.icon}</div>
+                <h3 className="mb-2 text-[15px] font-semibold text-light/90">
+                  {service.title}
+                </h3>
+                <p className="text-[13px] leading-relaxed text-light/45">{service.desc}</p>
+              </div>
+            </FadeUp>
           ))}
         </div>
       </div>

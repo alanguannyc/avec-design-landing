@@ -1,14 +1,16 @@
 import Head from "next/head";
 
 import Hero from "@/app/components/hero";
-import Services from "@/app/components/services";
-import AgentSection from "@/app/components/agentSection";
+import StatsSection from "@/app/components/statsSection";
+import ScrollServices from "@/app/components/scrollServices";
+import ScrollFeatures from "@/app/components/scrollFeatures";
 import CTA from "@/app/components/CTA";
 import Projects from "./components/projects";
 import ContactForm from "./components/contactForm";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import TrustedBy from "./components/trustedBy";
+import HyperframeSkills from "./components/hyperframeSkills";
 // app/page.tsx
 export const metadata = {
   title: "AVEC Design | Digital Solutions & AI Automations",
@@ -33,10 +35,13 @@ export default function HomePage() {
         <Hero />
 
         {/* Services Section */}
-        <Services />
+        <ScrollServices />
+
+        {/* Stats Section */}
+        <StatsSection />
 
         {/* AI Agents Section */}
-        <AgentSection />
+        <ScrollFeatures />
 
         {/* Work Showcase */}
 
@@ -44,6 +49,10 @@ export default function HomePage() {
 
         {/* Social Proof */}
         <TrustedBy />
+
+        {/* Skills */}
+        <HyperframeSkills />
+
         {/* CTA Section */}
         <CTA />
         {/* Contact Section */}
