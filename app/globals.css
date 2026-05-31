@@ -122,3 +122,20 @@ body {
   animation: terminal-blink 1.1s step-end infinite;
   color: var(--color-secondary-soft);
 }
+
+@keyframes beacon-scan {
+  from { transform: translateX(-110%); }
+  to   { transform: translateX(310%); }
+}
+
+.beacon-scan-track {
+  animation: beacon-scan 1.7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beacon-scan-track,
+  .terminal-cursor::after {
+    animation: none;
+  }
+}
